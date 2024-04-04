@@ -1,33 +1,56 @@
 import {Button, Form, Input} from "antd";
 import Search from "antd/es/input/Search";
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Space, Table, Tag } from 'antd';
+import axios from "axios";
+import moment from 'moment';
+import { Image } from 'antd';
+
 const columns = [
     {
         title: 'Profile picture',
-        dataIndex: 'ProfilePicture',
-        key: 'ProfilePicture',
+        dataIndex: 'image',
+        key: 'Image',
+        render :  (image, record, index) => {
+            return<>
+                <Image
+                    width={50}
+                    height={50}
+                    src="error"
+                    fallback={image}
+                />
+            </>;
+        }
 
     },
     {
         title: 'First name',
-        dataIndex: 'Firstname',
+        dataIndex: 'first_name',
         key: 'Firstname',
     },
     {
         title: 'Last Name',
-        dataIndex: 'Lastname',
+        dataIndex: 'last_name',
         key: 'Lastname',
     },
     {
         title: 'Gender',
-        dataIndex: 'Gender',
+        dataIndex: 'gender',
         key: 'Gender',
     },
     {
         title: 'Birthday',
-        dataIndex: 'Birthday',
+        dataIndex: 'birthday',
         key: 'Birthday',
+        render :  (birthday, record, index) => {
+            let date = new Date(birthday);
+            let dateDisplay = moment(date).format('DD/MM/YYYY');
+
+            console.log(dateDisplay);
+            return <>{dateDisplay}</>;
+        }
+
+
     },
     {
         title: 'Action',
@@ -43,96 +66,45 @@ const columns = [
 
 ];
 const data = [
-    {
-        key: '1',
-        ProfilePicture: 'A',
-        Firstname: 'bbb',
-        Lastname: 'New York ',
-        Gender: 'male',
-        Birthday: '19 may 1995'
-    },
-    {
-        key: '2',
-        ProfilePicture: 'B',
-        Firstname: 'cccc',
-        Lastname: 'city ',
-        Gender: 'male',
-        Birthday: '25 Oct 1995'
-    },
-    {
-        key: '3',
-        ProfilePicture: 'B',
-        Firstname: 'cccc',
-        Lastname: 'city ',
-        Gender: 'male',
-        Birthday: '25 Oct 1995'
-    },
-    {
-        key: '4',
-        ProfilePicture: 'B',
-        Firstname: 'cccc',
-        Lastname: 'city ',
-        Gender: 'male',
-        Birthday: '25 Oct 1995'
-    },
-    {
-        key: '5',
-        ProfilePicture: 'B',
-        Firstname: 'cccc',
-        Lastname: 'city ',
-        Gender: 'male',
-        Birthday: '25 Oct 1995'
-    },
-    {
-        key: '6',
-        ProfilePicture: 'B',
-        Firstname: 'cccc',
-        Lastname: 'city ',
-        Gender: 'male',
-        Birthday: '25 Oct 1995'
-    },
-    {
-        key: '7',
-        ProfilePicture: 'B',
-        Firstname: 'cccc',
-        Lastname: 'city ',
-        Gender: 'male',
-        Birthday: '25 Oct 1995'
-    },
-    {
-        key: '8',
-        ProfilePicture: 'B',
-        Firstname: 'cccc',
-        Lastname: 'city ',
-        Gender: 'male',
-        Birthday: '25 Oct 1995'
-    },{
-        key: '9',
-        ProfilePicture: 'B',
-        Firstname: 'cccc',
-        Lastname: 'city ',
-        Gender: 'male',
-        Birthday: '25 Oct 1995'
-    },{
-        key: '10',
-        ProfilePicture: 'B',
-        Firstname: 'cccc',
-        Lastname: 'city ',
-        Gender: 'male',
-        Birthday: '25 Oct 1995'
-    },{
-        key: '11',
-        ProfilePicture: 'B',
-        Firstname: 'cccc',
-        Lastname: 'city ',
-        Gender: 'male',
-        Birthday: '25 Oct 1995'
-    },
 
 ];
 
+// ...
+//เรียกApi
+const API_URL = 'http://localhost:8080';
 
 function UserList() {
+
+    const [dataTable,setDataTable] = useState(data);
+
+    const getUser = async () => {
+        try {
+            const response = await axios.get(`${API_URL}/users`);
+            console.log(response);
+            const userDatas = response.data;
+            console.log(`users `, userDatas);
+            setDataTable(userDatas);
+
+        } catch (errors) {
+            console.error(errors);
+        }
+    };
+    const putUser = async () => {
+        try {
+            const response = await axios.put(`${API_URL}/users/users/:id`);
+            console.log(response);
+            const userDatas = response.data;
+            console.log(`users `, userDatas);
+            setDataTable(userDatas);
+
+        } catch (errors) {
+            console.error(errors);
+        }
+    };
+
+    useEffect(() => {
+        getUser();
+    }, []);
 
     return<>
         <div>
@@ -147,8 +119,7 @@ function UserList() {
             </Button>
 
         </div>
-         <Table columns={columns} dataSource={data} />;
-
+         <Table columns={columns} dataSource={dataTable}   rowKey="id" />;
     </>;
 
 }

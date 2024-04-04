@@ -128,7 +128,7 @@ const beforeUpload = (file) => {
                     </div>
                 </Col>
                 <Col className="gutter-row" span={8}>
-                    <div >col-1
+                    <div >
                         <Form.Item
                             name="fristName"
                             label="Frist Name"
@@ -145,7 +145,7 @@ const beforeUpload = (file) => {
                     </div>
                 </Col>
                 <Col className="gutter-row" span={8}>
-                    <div >col-2
+                    <div >
                         <Form.Item
                             name="lastName"
                             label="Last Name"
