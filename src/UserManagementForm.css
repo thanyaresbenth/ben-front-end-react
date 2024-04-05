@@ -94,4 +94,10 @@
 
 }
 
+.custom-avt {
+    border-radius: 50%;
+    position: relative;
+    width:200px;
+    height: 200px;
+}
 

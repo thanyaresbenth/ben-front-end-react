@@ -5,6 +5,7 @@ import UserManagemnet from "./UserManagemnet";
 import UserList from "./UserList";
 import CreateNewUser from "./CreateNewUser";
 import './UserManagementForm.css';
+import Layout from "./Layout";
 
 
 function App() {
@@ -12,11 +13,9 @@ function App() {
     <div className="App">
      <BrowserRouter>
        <Routes>
+
            <Route path="/UserManagemnet" element={<UserManagemnet/>}></Route>
-           <Route path="/user-list" element={<UserList/>}></Route>
-           <Route path="/create-new-user" element={<CreateNewUser/>}></Route>
-
-
+           <Route path="/" element={<UserList/>}></Route>
 
          {/*</Route>*/}
        </Routes>

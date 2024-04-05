@@ -84,23 +84,23 @@ function UserList() {
     const [dataTable,setDataTable] = useState(data);
     const navigate =useNavigate();
 
-    function edit(id){
-        console.log(id);
-        navigate(`/UserManagemnet?id=${id}`);
-    }
+
     // edit function to navigate
     function edit(id) {
         console.log(id);
-        navigate(`/UserManagemnet?id=${id}`); // Navigate to the UserManagement component with query param
+        navigate(`/UserManagemnet?id=${id}`);
     }
 
-// In your UserManagement component
-
-
+    function addUser(){
+        navigate('/UserManagemnet');
+    }
 
     function deleteUser(id){
         console.log(id);
-    }
+        const deleteData= axios.delete(`${API_URL}/users/users/${id}`);
+        getUser();
+
+  }
 
     const getUser = async () => {
         try {
@@ -127,7 +127,7 @@ function UserList() {
                 allowClear
                 style={{ width: 304 }}
             />
-            <Button type="primary" >
+            <Button type="primary" onClick={() => addUser()}>
                 Add+
             </Button>
 
