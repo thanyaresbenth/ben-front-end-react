@@ -1,0 +1,85 @@
+.user-management .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding: 30px;
+}
+
+.user-management .ant-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    padding: 25px;
+}
+
+.user-management .ant-upload.ant-upload-select-picture-card {
+    width: auto;
+    height: auto;
+    align-content: center;
+}
+
+.user-management .ant-btn {
+    width: 25%;
+    margin-bottom: 8px;
+}
+
+.user-management .ant-row {
+    margin-bottom: 16px;
+}
+
+/* Add any additional styling as needed */
+/* Center the upload card within its column */
+/* UserManagementForm.css */
+.upload-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*padding-top: 2px; !* Adjust the padding as needed *!*/
+}
+
+.avatar-uploader .ant-upload {
+    border: 2px dashed #d9d9d9;
+    border-radius: 50%;
+    width: 150px; /* Adjust size as needed */
+    height: 200px; /* Adjust size as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Styles for upload and delete buttons */
+.upload-buttons .ant-btn {
+    margin-top: 10px; /* Space between upload area and button */
+    width: auto; /* Set to auto or specific width as needed */
+}
+
+/* Style for the delete button to make it red */
+.delete-btn   :hover {
+    background-color: #ff4d4f; /* Red background */
+    color: #fff; /* White text */
+    border: none; /* Remove border */
+
+
+    /* Add hover effect if needed */
+}
+.cancel-container{
+    background-color: darkgray;
+    color: #fff; /* White text */
+    border: none; /* Remove border */
+
+}
+.save-container{
+    background-color: green;
+    color: #fff; /* White text */
+    border: none; /* Remove border */
+
+}
+
+
