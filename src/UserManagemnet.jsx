@@ -81,7 +81,7 @@ function UserManagement() {
 
 
     return (
-        <div className="user-management">
+        <div className="user-management" >
             <div className="header">
                 <p>Create new User</p>
 
@@ -90,7 +90,7 @@ function UserManagement() {
             </div>
             <Form form={form} {...formItemLayout}>
                 <Row gutter={16}>
-                    <Col className="gutter-row upload-col" span={8}>
+                    <Col className="gutter-row upload-col" span={10}>
                         <div className="upload-imge">
                         <Upload
                             name="avatar"
@@ -103,19 +103,21 @@ function UserManagement() {
                             {uploadButton}
                         </Upload>
                         </div>
-                        <div className="upload-buttons">
+
+                        <div className="upload-buttons" span={5} style={{ textAlign: 'center' }}>
                             <Button type="primary">Upload Profile Picture</Button>
 
                         </div>
                         <div  className="upload-buttons">
                         <Button type="primary" danger>Delete Picture</Button>
                         </div>
+
                     </Col>
 
 
-                    <Col className="gutter-row" span={16}>
-                        <Row gutter={16}>
-                            <Col span={12}>
+                    <Col className="gutter-row" span={14}>
+                        <Row gutter={12}>
+                            <Col span={8}>
                                 <Form.Item name="first_name" label="First Name">
                                     <Input placeholder="Please enter first name" />
                                 </Form.Item>
@@ -144,7 +146,7 @@ function UserManagement() {
                     </Col>
                 </Row>
                 <Row>
-                    <Col span={24} style={{ textAlign: 'right' }}>
+                    <Col span={20} style={{ textAlign: 'right' }}>
                         <Button className="cancel-container" type="btn-btn"  onClick={() => form.resetFields()}>Cancel</Button>
                         <Button className="save-container" type="btn-btn" onClick={handleSubmit} style={{ marginLeft: '15px' }}>
                             Save

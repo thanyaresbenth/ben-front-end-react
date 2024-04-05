@@ -1,11 +1,17 @@
-.user-management .header {
+.user-management.header{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 24px;
-    padding: 30px;
+    padding: 2px;
 }
-
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 5px;
+}
 .user-management .ant-upload {
     border: 1px dashed #d9d9d9;
     border-radius: 50%;
@@ -58,6 +64,12 @@
 .upload-buttons .ant-btn {
     margin-top: 10px; /* Space between upload area and button */
     width: auto; /* Set to auto or specific width as needed */
+    padding-left: 2px;
+    padding-right: 3px;
+}
+.ant-btn {
+
+
 }
 
 /* Style for the delete button to make it red */
