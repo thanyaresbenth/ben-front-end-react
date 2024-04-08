@@ -3,35 +3,37 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 24px;
-    padding: 2px;
+    padding: 30px;
+
 }
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
-    padding: 5px;
+    padding: 30px;
 }
-.user-management .ant-upload {
-    border: 1px dashed #d9d9d9;
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 16px;
-    padding: 25px;
-}
+/*.user-management .ant-upload {*/
+/*    border: 1px dashed #d9d9d9;*/
+/*    !*border-radius: 50%;*!*/
+/*    !*width: 120px;*!*/
+/*    !*height: 120px;*!*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    margin-bottom: 2px;*/
+/*    padding: 25px;*/
+/*}*/
 
 .user-management .ant-upload.ant-upload-select-picture-card {
-    width: auto;
-    height: auto;
+    width: 100px;
+    height: 100px;
     align-content: center;
+
 }
 
 .user-management .ant-btn {
-    width: 25%;
+    width: 15%;
     margin-bottom: 8px;
 }
 
@@ -39,21 +41,19 @@
     margin-bottom: 16px;
 }
 
-/* Add any additional styling as needed */
-/* Center the upload card within its column */
-/* UserManagementForm.css */
+
 .upload-col {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /*padding-top: 2px; !* Adjust the padding as needed *!*/
+
 }
 
 .avatar-uploader .ant-upload {
     border: 2px dashed #d9d9d9;
     border-radius: 50%;
-    width: 150px; /* Adjust size as needed */
-    height: 200px; /* Adjust size as needed */
+    width: 150px;
+    height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -62,42 +62,37 @@
 
 /* Styles for upload and delete buttons */
 .upload-buttons .ant-btn {
-    margin-top: 10px; /* Space between upload area and button */
-    width: auto; /* Set to auto or specific width as needed */
-    padding-left: 2px;
-    padding-right: 3px;
+    margin-top: 10px;
+    width: auto;
+    padding-left: 5px;
+    padding-right: 5px;
 }
-.ant-btn {
-
-
-}
-
-/* Style for the delete button to make it red */
 .delete-btn   :hover {
-    background-color: #ff4d4f; /* Red background */
-    color: #fff; /* White text */
-    border: none; /* Remove border */
+    background-color: #ff4d4f;
+    color: #fff;
+    border: none;
 
-
-    /* Add hover effect if needed */
 }
-.cancel-container{
+.cancel-container   {
     background-color: darkgray;
-    color: #fff; /* White text */
-    border: none; /* Remove border */
+    color: #fff;
+    border: none;
 
 }
-.save-container{
+.save-container  {
     background-color: green;
-    color: #fff; /* White text */
-    border: none; /* Remove border */
+    color: #fff;
+    border: none;
 
 }
 
 .custom-avt {
     border-radius: 50%;
     position: relative;
-    width:200px;
-    height: 200px;
+    width:150px;
+    height: 150px;
 }
-
+.cancel-save-button{
+    padding-left: 15px;
+    padding-right: 15px;
+}

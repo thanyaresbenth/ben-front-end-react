@@ -9,10 +9,10 @@ import moment from "moment";
 import {useSearchParams} from "react-router-dom"; // Make sure to include your custom styles file
 
 // Define the layout for form items
-const formItemLayout = {
-    labelCol: { span: 24 },
-    wrapperCol: { span: 24 },
-};
+// const formItemLayout = {
+//     labelCol: { span: 24 },
+//     wrapperCol: { span: 24 },
+// };
 
 function UserManagement() {
 
@@ -22,11 +22,11 @@ function UserManagement() {
     const [id, setId] = useState(requestId);
     const [image, setImage] = useState(null);
 
-    const uploadButton = (
-            <div className="upload-buttons" span={5} style={{textAlign: 'center'}}>
-                <Button icon={<UploadOutlined/>} type="primary">Upload Profile Picture</Button>
-            </div>
-    );
+    // const uploadButton = (
+    //         <div className="upload-buttons" span={4} style={{textAlign: 'center'}}>
+    //             <Button icon={<UploadOutlined/>} type="primary">Upload Profile Picture</Button>
+    //         </div>
+    // );
 
     const onDeletePicture = () => {
         setImage(null);
@@ -86,88 +86,96 @@ function UserManagement() {
 
 
     return (
-        <div className="user-management">
-            <div className="header">
-                <p>Create new User</p>
+        <>
+            <div className="user-management">
+                <div className="header">
+                    <label>Create new User</label>
+                    <Button type="primary">Add+</Button>
+                </div>
+                <Form form={form} >
+                    <Row  gutter={[16, 16]}>
+                        <Col className="gutter-row upload-col"  xs={24} sm={8}>
 
-                <Button type="primary">Add+</Button>
+                            <img src={image} className="custom-avt">
 
+                            </img>
+
+                            <Upload
+                                name="avatar"
+                                showUploadList={false}
+                                beforeUpload={file => {
+                                    const reader = new FileReader();
+
+                                    reader.onload = e => {
+                                        console.log(e.target.result);
+                                        setImage(e.target.result);
+                                    };
+                                    reader.readAsDataURL(file);
+                                    return false;
+                                }}
+                            >
+                                <div className="upload-buttons"  style={{textAlign: 'center'}}>
+                                    <Button icon={<UploadOutlined/>} type="primary">Upload Profile Picture</Button>
+                                </div>
+                            </Upload>
+
+                            <div className="upload-buttons">
+                                <Button onClick={onDeletePicture} type="primary" danger>Delete Picture</Button>
+                            </div>
+
+                        </Col>
+                        <Col className="gutter-row"    xs={24} sm={16}>
+                            <Row gutter={12}>
+                                <Col span={12}>
+                                    <Form.Item name="first_name">
+                                        <div style={{textAlign: 'initial'}}>First Name</div>
+                                        <Input placeholder="Please enter first name"/>
+                                    </Form.Item>
+                                </Col>
+                                <Col span={12}>
+                                    <Form.Item name="last_name" >
+                                        <div style={{textAlign: 'initial'}}>Last Name</div>
+                                        <Input placeholder="Please enter last name"/>
+                                    </Form.Item>
+                                </Col>
+                            </Row>
+                            <Row gutter={12}>
+                                <Col span={12}>
+                                    <Form.Item name="gender" >
+                                        <div style={{textAlign: 'initial'}}>Gender</div>
+                                        <Select placeholder="--Please select Gender--">
+                                            <Select.Option value="male">Male</Select.Option>
+                                            <Select.Option value="female">Female</Select.Option>
+                                        </Select>
+                                    </Form.Item>
+                                </Col>
+                                <Col span={12}>
+                                    <Form.Item name="birthday" >
+                                        <div style={{textAlign: 'initial'}}>Birthday</div>
+                                        <div >
+                                        <DatePicker format="DD/MM/YYYY" placeholder="DD/MM/YYYY"/>
+                                        </div>
+                                    </Form.Item>
+                                </Col>
+                            </Row>
+
+                        </Col>
+                    </Row>
+
+                    <Row className="cancel-save-button">
+                        <Col span={20} style={{textAlign: 'right'}}>
+                            <Button className="cancel-container" type="btn-btn"
+                                    onClick={() => form.resetFields()}>Cancel</Button>
+                            <Button className="save-container" type="btn-btn" onClick={handleSubmit}
+                                    style={{marginLeft: '15px'}}>
+                                Save
+                            </Button>
+                        </Col>
+                    </Row>
+                </Form>
             </div>
-            <Form form={form} {...formItemLayout}>
-                <Row gutter={16}>
-                    <Col className="gutter-row upload-col" span={10}>
+        </>
 
-                    <img src={image} className="custom-avt">
-
-                    </img>
-
-                    <Upload
-                        name="avatar"
-                        showUploadList={false}
-                        beforeUpload={file => {
-                            const reader = new FileReader();
-
-                            reader.onload = e => {
-                                console.log(e.target.result);
-                                setImage(e.target.result);
-                            };
-                            reader.readAsDataURL(file);
-                            return false;
-                        }}
-                    >
-                        {uploadButton}
-                    </Upload>
-
-                    <div className="upload-buttons">
-                        <Button onClick={onDeletePicture} type="primary" danger>Delete Picture</Button>
-                    </div>
-
-
-                </Col>
-
-
-                <Col className="gutter-row" span={14}>
-                    <Row gutter={12}>
-                        <Col span={8}>
-                            <Form.Item name="first_name" label="First Name">
-                                    <Input placeholder="Please enter first name"/>
-                                </Form.Item>
-                            </Col>
-                            <Col span={12}>
-                                <Form.Item name="last_name" label="Last Name">
-                                    <Input placeholder="Please enter last name"/>
-                                </Form.Item>
-                            </Col>
-                        </Row>
-                        <Row gutter={16}>
-                            <Col span={12}>
-                                <Form.Item name="gender" label="Gender">
-                                    <Select placeholder="--Please select Gender--">
-                                        <Select.Option value="male">Male</Select.Option>
-                                        <Select.Option value="female">Female</Select.Option>
-                                    </Select>
-                                </Form.Item>
-                            </Col>
-                            <Col span={12}>
-                                <Form.Item name="birthday" label="Birthday">
-                                    <DatePicker format="DD/MM/YYYY" placeholder="DD/MM/YYYY"/>
-                                </Form.Item>
-                            </Col>
-                        </Row>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col span={20} style={{textAlign: 'right'}}>
-                        <Button className="cancel-container" type="btn-btn"
-                                onClick={() => form.resetFields()}>Cancel</Button>
-                        <Button className="save-container" type="btn-btn" onClick={handleSubmit}
-                                style={{marginLeft: '15px'}}>
-                            Save
-                        </Button>
-                    </Col>
-                </Row>
-            </Form>
-        </div>
     );
 }
 

@@ -101,10 +101,11 @@ function UserList() {
         getUser();
 
   }
-
+    // async function getUser(){
     const getUser = async () => {
         try {
             const response = await axios.get(`${API_URL}/users`);
+            // const response =  axios.get(`${API_URL}/users`);
             console.log(response);
             const userDatas = response.data;
             console.log(`users `, userDatas);

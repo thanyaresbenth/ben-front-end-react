@@ -1,0 +1,12 @@
+.navbar {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 3px;
+    z-index: 1000; /* Ensures navbar is above other content */
+    background-color: #0077ff; /* Your existing pink color */
+    text-align: left;
+    padding: 10px;
+    color: #fff;
+
+
+}
