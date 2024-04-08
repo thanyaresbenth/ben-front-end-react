@@ -6,7 +6,7 @@ import axios from 'axios';
 
 import './UserManagementForm.css';
 import moment from "moment";
-import {useSearchParams} from "react-router-dom"; // Make sure to include your custom styles file
+import {useNavigate, useSearchParams} from "react-router-dom"; // Make sure to include your custom styles file
 
 // Define the layout for form items
 // const formItemLayout = {
@@ -21,6 +21,7 @@ function UserManagement() {
     const requestId = searchParams.get("id");
     const [id, setId] = useState(requestId);
     const [image, setImage] = useState(null);
+    const  navigate =useNavigate();
 
     // const uploadButton = (
     //         <div className="upload-buttons" span={4} style={{textAlign: 'center'}}>
@@ -31,6 +32,9 @@ function UserManagement() {
     const onDeletePicture = () => {
         setImage(null);
     }
+    // function add() {
+    //     navigate('/')
+    // }
 
     const [form] = Form.useForm();
     const handleSubmit = () => {
@@ -46,6 +50,7 @@ function UserManagement() {
                     birthday: values.birthday ? moment(values.birthday).format('YYYY-MM-DD') : '',
                     image: image, // This should be the image data or image URL from your state
                 };
+                console.log(requestUser)
 
                 if (id != null) {
                     axios
@@ -82,6 +87,7 @@ function UserManagement() {
                 console.error('Validate Failed:', errorInfo);
                 message.error('Please correct the errors in the form.');
             });
+
     };
 
 
@@ -90,10 +96,10 @@ function UserManagement() {
             <div className="user-management">
                 <div className="header">
                     <label>Create new User</label>
-                    <Button type="primary">Add+</Button>
+                    <Button type="primary" >Add+</Button>
                 </div>
                 <Form form={form} >
-                    <Row  gutter={[16, 16]}>
+                    <Row  >
                         <Col className="gutter-row upload-col"  xs={24} sm={8}>
 
                             <img src={image} className="custom-avt">
@@ -127,22 +133,26 @@ function UserManagement() {
                         <Col className="gutter-row"    xs={24} sm={16}>
                             <Row gutter={12}>
                                 <Col span={12}>
-                                    <Form.Item name="first_name">
-                                        <div style={{textAlign: 'initial'}}>First Name</div>
+                                    <div style={{textAlign: 'initial'}}>First Name</div>
+                                    <Form.Item name="first_name" >
+                                    {/*<Form.Item name="first_name">*/}
                                         <Input placeholder="Please enter first name"/>
                                     </Form.Item>
                                 </Col>
                                 <Col span={12}>
-                                    <Form.Item name="last_name" >
+                                    {/*<Form.Item name="last_name" >*/}
                                         <div style={{textAlign: 'initial'}}>Last Name</div>
+                                    <Form.Item name="last_name" >
                                         <Input placeholder="Please enter last name"/>
                                     </Form.Item>
                                 </Col>
                             </Row>
                             <Row gutter={12}>
                                 <Col span={12}>
-                                    <Form.Item name="gender" >
-                                        <div style={{textAlign: 'initial'}}>Gender</div>
+                                    {/*<Form.Item name="gender" >*/}
+                                    <div style={{textAlign: 'initial'}}>Gender</div>
+                                        <Form.Item name="gender" >
+                                        {/*<div style={{textAlign: 'initial'}}>Gender</div>*/}
                                         <Select placeholder="--Please select Gender--">
                                             <Select.Option value="male">Male</Select.Option>
                                             <Select.Option value="female">Female</Select.Option>
@@ -150,11 +160,11 @@ function UserManagement() {
                                     </Form.Item>
                                 </Col>
                                 <Col span={12}>
-                                    <Form.Item name="birthday" >
+                                    {/*<Form.Item name="birthday" >*/}
                                         <div style={{textAlign: 'initial'}}>Birthday</div>
-                                        <div >
+                                        <Form.Item name="birthday" >
                                         <DatePicker format="DD/MM/YYYY" placeholder="DD/MM/YYYY"/>
-                                        </div>
+
                                     </Form.Item>
                                 </Col>
                             </Row>
