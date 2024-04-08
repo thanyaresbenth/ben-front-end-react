@@ -6,22 +6,22 @@ import UserList from "./UserList";
 import './UserManagementForm.css';
 import './Manu.css';
 
-// const Navigation = () => {
-//
-//     return (
-//         <nav className="navbar">
-//             <label>User management</label>
-//
-//         </nav>
-//     );
-// };
+const Navigation = () => {
+
+    return (
+        <nav className="navbar">
+            <label>User management</label>
+
+        </nav>
+    );
+};
 
 
 function App() {
 
     return (
         <div className="App">
-            {/*<Navigation/>*/}
+            <Navigation/>
             <BrowserRouter>
                 <Routes>
 

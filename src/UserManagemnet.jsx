@@ -50,7 +50,7 @@ function UserManagement() {
                     birthday: values.birthday ? moment(values.birthday).format('YYYY-MM-DD') : '',
                     image: image, // This should be the image data or image URL from your state
                 };
-                console.log(requestUser)
+
 
                 if (id != null) {
                     axios
